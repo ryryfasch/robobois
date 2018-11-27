@@ -26,6 +26,7 @@ var serialPortCallback = function(err) {
 };
 
 app.get('/', function(req, res){
+  res.send("hi");
   // res.render('index', {title: 'Search for whatever you want'});
 })
 
