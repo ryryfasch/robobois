@@ -8,6 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 
+// SerialPort.list(function (err, ports) {
+//   ports.forEach(function(port) {
+//     console.log(port);
+//   });
+// });
+
+
 var serialPort = new SerialPort("COM11", {
    baudRate: 9600
 });
