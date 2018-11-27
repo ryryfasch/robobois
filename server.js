@@ -28,6 +28,7 @@ var serialPortCallback = function(err) {
 
 
 app.get('/', function(req, res){
+  res.send("hi");
   // res.render('index', {title: 'Search for whatever you want'});
   serialPort.on('open', function() {
     console.log("Connected1\n");
