@@ -5,9 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "bluetooth-serial-port": "^2.1.7",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "html": "^1.0.0",
     "node-bluetooth": "^1.2.4",
-    "serialport": "^7.1.0"
+    "serialport": "^7.1.0",
+    "speech-to-text": "^1.1.0"
   },
   "devDependencies": {},
   "scripts": {
