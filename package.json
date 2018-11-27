@@ -8,6 +8,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "html": "^1.0.0",
+    "jQuery": "^1.7.4",
     "node-bluetooth": "^1.2.4",
     "nodemon": "^1.18.7",
     "serialport": "^7.1.0",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "run": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

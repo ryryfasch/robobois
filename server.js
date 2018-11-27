@@ -1,13 +1,15 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 var SerialPort = require('serialport');
+const util = require('util');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/views'));
+// app.use(express.static('public'));
 
 // SerialPort.list(function (err, ports) {
 //   ports.forEach(function(port) {
@@ -38,10 +40,12 @@ app.get('/', function(req, res){
 })
 
 app.post('/', function (req, res) {
-  serialPort.on('open', function() {
-     console.log("Connected2\n");
-     serialPort.write(req.body.command, serialPortCallback);
-  });
+    console.log("request " + req.body);
+    console.log(util.inspect(req.body, {showHidden: false, depth: null}))
+  // serialPort.on('open', function() {
+  //    console.log("Connected2\n");
+  //    serialPort.write(req.body.command, serialPortCallback);
+  // });
   // res.render('index0');
 })
 
