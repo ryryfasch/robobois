@@ -25,13 +25,19 @@ var serialPortCallback = function(err) {
    }
 };
 
+
+
 app.get('/', function(req, res){
   // res.render('index', {title: 'Search for whatever you want'});
+  serialPort.on('open', function() {
+    console.log("Connected1\n");
+    serialPort.write('a', serialPortCallback);
+ });
 })
 
 app.post('/', function (req, res) {
   serialPort.on('open', function() {
-     console.log("Connected\n");
+     console.log("Connected2\n");
      serialPort.write(req.body.command, serialPortCallback);
   });
   // res.render('index0');
