@@ -32,7 +32,7 @@ app.get('/', function(req, res){
   // res.render('index', {title: 'Search for whatever you want'});
   serialPort.on('open', function() {
     console.log("Connected1\n");
-    serialPort.write('a', serialPortCallback);
+    serialPort.write('f', serialPortCallback);
  });
 })
 
