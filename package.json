@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bluetooth-serial-port": "^2.1.7",
+    "express": "^4.16.4",
     "node-bluetooth": "^1.2.4",
     "serialport": "^7.1.0"
   },
