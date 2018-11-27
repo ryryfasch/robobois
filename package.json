@@ -1,0 +1,17 @@
+{
+  "name": "robobois",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bluetooth-serial-port": "^2.1.7",
+    "node-bluetooth": "^1.2.4",
+    "serialport": "^7.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
