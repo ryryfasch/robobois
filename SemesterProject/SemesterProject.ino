@@ -20,11 +20,17 @@ void loop() {
     int inByte = Serial1.read();
     inputString += (char)inByte;
 
-    if(inputString == "f") {
+    if(inputString == "forward") {
       sparki.moveForward();
     }
-    if(inputString == "s") {
+    if(inputString == "stop") {
       sparki.moveStop();
+    }
+    if(inputString == "left") {
+      sparki.moveLeft(90);
+    }
+    if(inputString == "right") {
+      sparki.moveRight(90);
     }
   }
   inputString = "";
