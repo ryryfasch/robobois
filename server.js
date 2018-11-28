@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/views'));
 //   });
 // });
 
-
+var command = "";
 var serialPort = new SerialPort("COM11", {
    baudRate: 9600
 });
@@ -40,12 +40,44 @@ app.get('/', function(req, res){
 })
 
 app.post('/', function (req, res) {
-    console.log("request " + req.body);
-    console.log(util.inspect(req.body, {showHidden: false, depth: null}))
-  // serialPort.on('open', function() {
-  //    console.log("Connected2\n");
-  //    serialPort.write(req.body.command, serialPortCallback);
-  // });
+    console.log("request " + req.body.command);
+    // console.log(util.inspect(req.body.command, {showHidden: false, depth: null}))
+
+    if(req.body.command == "forward"){
+      command = "forward";
+      serialPort.on('open', function() {
+         console.log("Connected2\n");
+         serialPort.write(command, serialPortCallback);
+      });
+    }
+    if(req.body.command == "backward"){
+      command = "backward";
+      serialPort.on('open', function() {
+         console.log("Connected2\n");
+         serialPort.write(command, serialPortCallback);
+      });
+    }
+    if(req.body.command == "turn left"){
+      command = "left"; // 90 degree turn
+      serialPort.on('open', function() {
+         console.log("Connected2\n");
+         serialPort.write(command, serialPortCallback);
+      });
+    }
+    if(req.body.command == "turn right"){
+      command = "right"; // 90 degree turn
+      serialPort.on('open', function() {
+         console.log("Connected2\n");
+         serialPort.write(command, serialPortCallback);
+      });
+    }
+    if(req.body.command == "stop"){
+      command == "stop";
+      serialPort.on('open', function() {
+         console.log("Connected2\n");
+         serialPort.write(command, serialPortCallback);
+      });
+    }
   // res.render('index0');
 })
 
