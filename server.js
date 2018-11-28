@@ -40,9 +40,7 @@ app.get('/', function(req, res){
 app.post('/', function (req, res) {
     console.log("request " + req.body);
     // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
-    if(req.body.command == 'forward'){
-      serialPort.write(req.body.command, serialPortCallback);
-    }
+    serialPort.write(req.body.command, serialPortCallback);
   // serialPort.on('open', function() {
   //    console.log("Connected2\n");
   //    serialPort.write(req.body.command, serialPortCallback);
