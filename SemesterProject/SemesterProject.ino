@@ -1,5 +1,7 @@
 #include <Sparki.h>
 
+#include "CommandStack.h"
+
 String inputString;
 
 /* Instructions
@@ -18,10 +20,10 @@ void loop() {
     int inByte = Serial1.read();
     inputString += (char)inByte;
 
-  if(inputString == "f") {
+    if(inputString == "f") {
       sparki.moveForward();
     }
-   if(inputString == "s") {
+    if(inputString == "s") {
       sparki.moveStop();
     }
   }
