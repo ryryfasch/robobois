@@ -8,18 +8,21 @@
     <title>Sparki Controller</title>
 
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/artyom.window.min.js"></script>
+    <script type="text/javascript" src="js/script.js" defer></script>
 
   </head>
   <body>
-    <form id="submit" action='/' method='post'>
-    <script src="js/artyom.window.min.js"></script>
-    <script type="text/javascript" src="js/script.js" defer></script>
-    <input type="text" name="command" placeholder="your search term here">
-    <button type="submit"> SEARCH </button>
-    </form>
+
     <div class="wrapper">
       <div class="content">
-
+        <div id="mic" class="micArea">
+          <img id="micButton" src="images/micIcon.png" alt="mic">
+        </div>
+        <form id="form" action='/' method='post'>
+          <input id="textInput" type="text" name="command" placeholder="your search term here">
+          <button type="submit"> SEARCH </button>
+        </form>
       </div>
     </div>
 

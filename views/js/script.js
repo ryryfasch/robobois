@@ -1,41 +1,38 @@
 const artyom = new Artyom();
 
-var xhr = new XMLHttpRequest();
-
-console.log(artyom);
-
 var inputText;
 
+var micBtn = document.getElementById("mic");
 
-var UserDictation = artyom.newDictation({
-    continuous:true, // Enable continuous if HTTPS connection
-    onResult:function(text){
-        // Do something with the text
-        console.log(text);
-        inputText = text;
+micBtn.addEventListener("mousedown", getCommand);
+micBtn.addEventListener("mouseup", setCommand);
 
-        updateForm(inputText);
-        // let data = {command: text};
-        // fetch("http://localhost:3000/", {
-        //   method: "POST",
-        //   body: JSON.stringify(text)
-        // }).then(res => {
-        //   console.log("Request complete! response:", res);
-        // });
+function getCommand(){
+  console.log("getting command");
 
-    },
-    onStart:function(){
-        console.log("Dictation started by the user");
-    },
-    onEnd:function(){
-        alert("Dictation stopped by the user");
-    }
-});
+  var UserDictation = artyom.newDictation({
+      continuous:true, // Enable continuous if HTTPS connection
+      onResult:function(text){
+          inputText = text;
 
-UserDictation.start();
+          // setCommand(inputText);
 
-function updateForm(text){
-  var submit = document.getElementById('script');
+      },
+      onStart:function(){
+          console.log("Dictation started by the user");
+      },
+      onEnd:function(){
+          alert("Dictation stopped by the user");
+      }
+  });
 
-  submit.value = text
+  UserDictation.start();
+}
+
+function setCommand(){
+  console.log("in set");
+  console.log("Text: " + inputText);
+  var submit = document.getElementById('textInput');
+  submit.value = inputText;
+
 }
