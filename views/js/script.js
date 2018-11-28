@@ -4,13 +4,17 @@ var xhr = new XMLHttpRequest();
 
 console.log(artyom);
 
+var inputText;
+
 
 var UserDictation = artyom.newDictation({
     continuous:true, // Enable continuous if HTTPS connection
     onResult:function(text){
         // Do something with the text
         console.log(text);
-        $.post('/', { command: text });
+        inputText = text;
+
+        updateForm(inputText);
         // let data = {command: text};
         // fetch("http://localhost:3000/", {
         //   method: "POST",
@@ -29,3 +33,9 @@ var UserDictation = artyom.newDictation({
 });
 
 UserDictation.start();
+
+function updateForm(text){
+  var submit = document.getElementById('script');
+
+  submit.value = text
+}
