@@ -11,11 +11,11 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/views'));
 // app.use(express.static('public'));
 
-SerialPort.list(function (err, ports) {
-  ports.forEach(function(port) {
-    console.log(port);
-  });
-});
+// SerialPort.list(function (err, ports) {
+//   ports.forEach(function(port) {
+//     console.log(port);
+//   });
+// });
 
 
 var serialPort = new SerialPort("COM11", {
@@ -38,10 +38,9 @@ serialPort.on('open', function() {
   })
 
   app.post('/', function (req, res) {
-      console.log("request " + req.body);
+      // console.log("request " + req.body);
       // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
       var command = '';
-      console.log("request " + req.body);
       // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
       if(req.body.command == "forward"){
         command = 'f';
