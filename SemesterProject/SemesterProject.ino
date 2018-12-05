@@ -19,12 +19,17 @@ void loop() {
   if(Serial1.available()) {
     int inByte = Serial1.read();
     inputString += (char)inByte;
+    char* split = strtok (inputString," ");
+    while (split != NULL)
+    {
+    printf ("%s\n",split);
+    split = strtok (NULL, " ");
+    }
+    printf("first index: %s\n", split[0]);
 
     if(inputString == "f") {
-      command_start_time = millis();
+      CommandItem forward = CommandItem('f', NULL);
       sparki.moveForward();
-      CommandItem forward = CommandItem('f', command_start_time);
-
     }
     if(inputString == "s") {
       sparki.moveStop();
