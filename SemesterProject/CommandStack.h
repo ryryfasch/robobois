@@ -27,7 +27,9 @@ public:
     ~CommandStack();
 
     void push(CommandItem item);
+    void push(char command);
     CommandItem pop();
+    CommandItem back();
 
     int getSize();
 
@@ -52,6 +54,12 @@ void CommandStack::push(CommandItem item)
     itemArray[_currentPos++] = item;
 }
 
+void push(char command)
+{
+    CommandItem item(command, -1);
+    itemArray[_currentPos++] = item;
+}
+
 CommandItem CommandStack::pop()
 {
     if(_currentPos > 0) {
@@ -61,6 +69,11 @@ CommandItem CommandStack::pop()
     }
     
     return CommandItem();
+}
+
+CommandItem back()
+{
+    return itemArray[_currentPos-1];
 }
 
 int CommandStack::getSize()
