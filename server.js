@@ -40,19 +40,36 @@ serialPort.on('open', function() {
   app.post('/', function (req, res) {
       // console.log("request " + req.body);
       // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
+
       var command = '';
       // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
       if(req.body.command == "forward"){
-        command = 'f';
+        if(req.bod.command.split(" ")[1]){
+          command = 'f' + req.bod.command.split(" ")[1];
+        } else{
+          command = 'f';
+        }
       }
       if(req.body.command == "left"){
-        command = 'l';
+        if(req.bod.command.split(" ")[1]){
+          command = 'l' +  req.bod.command.split(" ")[1];
+        } else {
+          command = 'l';
+        }
       }
       if(req.body.command == "right"){
-        command = 'r';
+        if(req.bod.command.split(" ")[1]){
+          command = 'r' + req.bod.command.split(" ")[1];
+        } else{
+          command = 'r';
+        }
       }
       if(req.body.command == "stop"){
-        command = 's';
+        if(req.bod.command.split(" ")[1]){
+          command = 's' + req.bod.command.split(" ")[1];
+        } else{
+          command = 's';
+        }
       }
       serialPort.write(command, serialPortCallback);
     // serialPort.on('open', function() {
