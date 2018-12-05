@@ -2,6 +2,10 @@
 
 #include "CommandStack.h"
 
+CommandStack stack;
+
+unsigned long oldTime;
+
 String inputString;
 
 /* Instructions
@@ -13,6 +17,10 @@ void setup() {
   // put your setup code here, to run once:
   // PuTTY serail port is COM10 or COM11
   Serial1.begin(9600);
+  Serial.begin(9600);
+  oldTime = millis();
+  CommandItem start('d', -1);
+  stack.push(start);
 }
 
 void loop() {
@@ -21,12 +29,21 @@ void loop() {
     inputString += (char)inByte;
 
     if(inputString == "f") {
-      command_start_time = millis();
+      unsigned long newTime = millis();
+      unsigned long diff = newTime - oldTime;
+      stack.back()->cmd_length = diff;
+      oldTime = millis();
+      stack.push('f');
+      Serial.print("Back command: "); Serial.print(stack.back()->command);
+      Serial.print("   Length: ");  Serial.println(stack.back()->cmd_length);
       sparki.moveForward();
-      CommandItem forward = CommandItem('f', command_start_time);
-
     }
     if(inputString == "s") {
+      unsigned long newTime = millis();
+      unsigned long diff = newTime - oldTime;
+      stack.back()->cmd_length = diff;
+      oldTime = millis();
+      
       sparki.moveStop();
     }
     if(inputString == "l") {
