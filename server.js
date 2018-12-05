@@ -43,28 +43,28 @@ serialPort.on('open', function() {
 
       var command = '';
       // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
-      if(req.body.command == "forward"){
+      if(req.body.command.contains("forward")){
         if(req.bod.command.split(" ")[1]){
           command = 'f' + req.bod.command.split(" ")[1];
         } else{
           command = 'f';
         }
       }
-      if(req.body.command == "left"){
+      if(req.body.command.contains("left")){
         if(req.bod.command.split(" ")[1]){
           command = 'l' +  req.bod.command.split(" ")[1];
         } else {
           command = 'l';
         }
       }
-      if(req.body.command == "right"){
+      if(req.body.command.contains("right")){
         if(req.bod.command.split(" ")[1]){
           command = 'r' + req.bod.command.split(" ")[1];
         } else{
           command = 'r';
         }
       }
-      if(req.body.command == "stop"){
+      if(req.body.command.contains("stop")){
         if(req.bod.command.split(" ")[1]){
           command = 's' + req.bod.command.split(" ")[1];
         } else{
