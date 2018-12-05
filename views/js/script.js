@@ -3,6 +3,7 @@ const artyom = new Artyom();
 var inputText;
 
 var micBtn = document.getElementById("mic");
+var UserDictation;
 
 micBtn.addEventListener("mousedown", getCommand);
 micBtn.addEventListener("mouseup", setCommand);
@@ -10,10 +11,11 @@ micBtn.addEventListener("mouseup", setCommand);
 function getCommand(){
   console.log("getting command");
 
-  var UserDictation = artyom.newDictation({
+  UserDictation = artyom.newDictation({
       continuous:true, // Enable continuous if HTTPS connection
       onResult:function(text){
           inputText = text;
+          // console.log(inputText);
 
           // setCommand(inputText);
 
@@ -29,10 +31,11 @@ function getCommand(){
   UserDictation.start();
 }
 
-function setCommand(){
-  console.log("in set");
-  console.log("Text: " + inputText);
-  var submit = document.getElementById('textInput');
-  submit.value = inputText;
+function setCommand(text){
+  console.log(UserDictation);
+  // console.log("in set");
+  // console.log("Text: " + inputText);
+  // var submit = document.getElementById('textInput');
+  // submit.value = text;
 
 }

@@ -11,11 +11,11 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/views'));
 // app.use(express.static('public'));
 
-// SerialPort.list(function (err, ports) {
-//   ports.forEach(function(port) {
-//     console.log(port);
-//   });
-// });
+SerialPort.list(function (err, ports) {
+  ports.forEach(function(port) {
+    console.log(port);
+  });
+});
 
 
 var serialPort = new SerialPort("COM11", {
@@ -29,26 +29,28 @@ var serialPortCallback = function(err) {
 };
 
 
-serialPort.on('open', function() {
-  console.log("Connected1\n");
   // serialPort.write('f', serialPortCallback);
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
+  serialPort.on('open', function() {
+    console.log("Connected1\n");
+    });
   // res.render('index', {title: 'Search for whatever you want'});
 })
 
 app.post('/', function (req, res) {
     console.log("request " + req.body);
     // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
-    serialPort.write(req.body.command, serialPortCallback);
+    serialPort.on('open', function() {
+      console.log("Connected1\n");
+      serialPort.write(req.body.command, serialPortCallback);
+      });
   // serialPort.on('open', function() {
   //    console.log("Connected2\n");
   //    serialPort.write(req.body.command, serialPortCallback);
   // });
   // res.render('index0');
 })
-
-});
 
 app.listen((process.env.PORT || 3000), function () {
   console.log('Example app listening on port 3000!')
