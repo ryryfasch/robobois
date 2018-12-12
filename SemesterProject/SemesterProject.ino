@@ -6,7 +6,7 @@ CommandStack stack;
 
 unsigned long oldTime;
 
-String inputString;
+char inputString;
 
 /* Instructions
  * Write code and upload to sparki via USB
@@ -26,7 +26,7 @@ void setup() {
 void loop() {
   if(Serial1.available()) {
     int inByte = Serial1.read();
-    inputString += (char)inByte;
+    inputString = (char)inByte;
 //    char* split = strtok(inputString," ");
 //    while (split != NULL)
     {
@@ -35,17 +35,16 @@ void loop() {
     }
 //    Serial.println(split[0]);
 
-    if(inputString == "f") {
+    if(inputString == 'f') {
       unsigned long newTime = millis();
       unsigned long diff = newTime - oldTime;
       stack.back()->cmd_length = diff;
       oldTime = millis();
       stack.push('f');
       Serial.print("Back command: "); Serial.print(stack.back()->command);
-      Serial.print("   Length: ");  Serial.println(stack.back()->cmd_length);
       sparki.moveForward();
     }
-    if(inputString == "s") {
+    if(inputString == 's') {
       unsigned long newTime = millis();
       unsigned long diff = newTime - oldTime;
       stack.back()->cmd_length = diff;
@@ -53,12 +52,14 @@ void loop() {
       
       sparki.moveStop();
     }
-    if(inputString == "l") {
+    if(inputString == 'l') {
       sparki.moveLeft(90);
     }
-    if(inputString == "r") {
+    if(inputString == 'r') {
       sparki.moveRight(90);
     }
   }
-  inputString = "";
+  inputString = NULL;
+
+  delay(100);
 }
