@@ -11,11 +11,11 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/views'));
 // app.use(express.static('public'));
 
-// SerialPort.list(function (err, ports) {
-//   ports.forEach(function(port) {
-//     console.log(port);
-//   });
-// });
+SerialPort.list(function (err, ports) {
+  ports.forEach(function(port) {
+    console.log(port);
+  });
+});
 
 
 var serialPort = new SerialPort("COM11", {
