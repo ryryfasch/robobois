@@ -76,6 +76,14 @@ serialPort.on('open', function() {
           command = 's';
         }
       }
+      if(req.body.command.indexOf("grab") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 'g ' + req.body.command.split(" ")[1];
+          console.log(command);
+        } else{
+          command = 'g';
+        }
+      }
       serialPort.write(command, serialPortCallback);
     // serialPort.on('open', function() {
     //    console.log("Connected2\n");
