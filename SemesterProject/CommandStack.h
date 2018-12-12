@@ -54,7 +54,7 @@ void CommandStack::push(CommandItem item)
     itemArray[_currentPos++] = item;
 }
 
-void push(char command)
+void CommandStack::push(char command)
 {
     CommandItem item(command, -1);
     itemArray[_currentPos++] = item;
@@ -71,7 +71,7 @@ CommandItem CommandStack::pop()
     return CommandItem();
 }
 
-CommandItem back()
+CommandItem CommandStack::back()
 {
     return itemArray[_currentPos-1];
 }

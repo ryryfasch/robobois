@@ -19,13 +19,13 @@ void loop() {
   if(Serial1.available()) {
     int inByte = Serial1.read();
     inputString += (char)inByte;
-    char* split = strtok(inputString," ");
-    while (split != NULL)
+//    char* split = strtok(inputString," ");
+//    while (split != NULL)
     {
-    Serial.println(split);
-    split = strtok (NULL, " ");
+//    Serial.println(split);
+//    split = strtok (NULL, " ");
     }
-    Serial.println(split[0]);
+//    Serial.println(split[0]);
 
     if(inputString == "f") {
       CommandItem forward = CommandItem('f', NULL);

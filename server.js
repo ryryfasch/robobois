@@ -43,30 +43,35 @@ serialPort.on('open', function() {
 
       var command = '';
       // console.log(util.inspect(req.body, {showHidden: false, depth: null}))
-      if(req.body.command.contains("forward")){
-        if(req.bod.command.split(" ")[1]){
-          command = 'f' + req.bod.command.split(" ")[1];
+
+      if(req.body.command.indexOf("forward") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 'f ' + req.body.command.split(" ")[1];
+          console.log(command);
         } else{
           command = 'f';
         }
       }
-      if(req.body.command.contains("left")){
-        if(req.bod.command.split(" ")[1]){
-          command = 'l' +  req.bod.command.split(" ")[1];
+      if(req.body.command.indexOf("left") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 'l ' +  req.body.command.split(" ")[1];
+          console.log(command);
         } else {
           command = 'l';
         }
       }
-      if(req.body.command.contains("right")){
-        if(req.bod.command.split(" ")[1]){
-          command = 'r' + req.bod.command.split(" ")[1];
+      if(req.body.command.indexOf("right") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 'r ' + req.body.command.split(" ")[1];
+          console.log(command);
         } else{
           command = 'r';
         }
       }
-      if(req.body.command.contains("stop")){
-        if(req.bod.command.split(" ")[1]){
-          command = 's' + req.bod.command.split(" ")[1];
+      if(req.body.command.indexOf("stop") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 's ' + req.body.command.split(" ")[1];
+          console.log(command);
         } else{
           command = 's';
         }
