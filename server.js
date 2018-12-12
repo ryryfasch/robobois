@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/views'));
 // });
 
 
-var serialPort = new SerialPort("COM11", {
+var serialPort = new SerialPort("COM5", {
    baudRate: 9600
 });
 
