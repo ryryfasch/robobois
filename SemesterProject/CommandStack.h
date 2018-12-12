@@ -16,7 +16,7 @@ struct CommandItem
     CommandItem()
     {
         command = ' ';
-        cmd_length = -1;
+        cmd_length = 0;
     }
 };
 
@@ -56,7 +56,7 @@ void CommandStack::push(CommandItem item)
 
 void CommandStack::push(char command)
 {
-    CommandItem item(command, -1);
+    CommandItem item(command, 0);
     itemArray[_currentPos++] = item;
 }
 

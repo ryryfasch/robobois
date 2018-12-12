@@ -19,7 +19,7 @@ void setup() {
   Serial1.begin(9600);
   Serial.begin(9600);
   oldTime = millis();
-  CommandItem start('d', -1);
+  CommandItem start('d', 0);
   stack.push(start);
 }
 
