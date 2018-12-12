@@ -1,22 +1,22 @@
-#ifndef COMMAND_STACK
-#define COMMAND_STACK
+#ifndef COMMAND_STACK_H
+#define COMMAND_STACK_H
 
-#define STACK_SIZE 250
+#define STACK_SIZE 100
 
 struct CommandItem
 {
     char command;
-    long length;
+    unsigned long cmd_length;
 
     CommandItem(char instruction, long time)
     {
         command = instruction;
-        length = time;
+        cmd_length = time;
     }
     CommandItem()
     {
         command = ' ';
-        length = -1;
+        cmd_length = 0;
     }
 };
 
@@ -29,7 +29,7 @@ public:
     void push(CommandItem item);
     void push(char command);
     CommandItem pop();
-    CommandItem back();
+    CommandItem* back();
 
     int getSize();
 
@@ -56,7 +56,7 @@ void CommandStack::push(CommandItem item)
 
 void CommandStack::push(char command)
 {
-    CommandItem item(command, -1);
+    CommandItem item(command, 0);
     itemArray[_currentPos++] = item;
 }
 
@@ -71,9 +71,9 @@ CommandItem CommandStack::pop()
     return CommandItem();
 }
 
-CommandItem CommandStack::back()
+CommandItem* CommandStack::back()
 {
-    return itemArray[_currentPos-1];
+    return &itemArray[_currentPos-1];
 }
 
 int CommandStack::getSize()
@@ -87,3 +87,5 @@ bool CommandStack::isEmpty()
 }
 
 #endif
+
+

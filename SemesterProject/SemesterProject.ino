@@ -2,7 +2,11 @@
 
 #include "CommandStack.h"
 
-String inputString;
+CommandStack stack;
+
+unsigned long oldTime;
+
+char inputString;
 
 /* Instructions
  * Write code and upload to sparki via USB
@@ -13,12 +17,16 @@ void setup() {
   // put your setup code here, to run once:
   // PuTTY serail port is COM10 or COM11
   Serial1.begin(9600);
+  Serial.begin(9600);
+  oldTime = millis();
+  CommandItem start('d', 0);
+  stack.push(start);
 }
 
 void loop() {
   if(Serial1.available()) {
     int inByte = Serial1.read();
-    inputString += (char)inByte;
+    inputString = (char)inByte;
 //    char* split = strtok(inputString," ");
 //    while (split != NULL)
     {
@@ -27,19 +35,31 @@ void loop() {
     }
 //    Serial.println(split[0]);
 
-    if(inputString == "f") {
-      CommandItem forward = CommandItem('f', NULL);
+    if(inputString == 'f') {
+      unsigned long newTime = millis();
+      unsigned long diff = newTime - oldTime;
+      stack.back()->cmd_length = diff;
+      oldTime = millis();
+      stack.push('f');
+      Serial.print("Back command: "); Serial.print(stack.back()->command);
       sparki.moveForward();
     }
-    if(inputString == "s") {
+    if(inputString == 's') {
+      unsigned long newTime = millis();
+      unsigned long diff = newTime - oldTime;
+      stack.back()->cmd_length = diff;
+      oldTime = millis();
+      
       sparki.moveStop();
     }
-    if(inputString == "l") {
+    if(inputString == 'l') {
       sparki.moveLeft(90);
     }
-    if(inputString == "r") {
+    if(inputString == 'r') {
       sparki.moveRight(90);
     }
   }
-  inputString = "";
+  inputString = NULL;
+
+  delay(100);
 }
