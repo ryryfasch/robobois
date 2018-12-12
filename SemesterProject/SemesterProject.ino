@@ -27,13 +27,13 @@ void loop() {
   if(Serial1.available()) {
     int inByte = Serial1.read();
     inputString += (char)inByte;
-    char* split = strtok (inputString," ");
-    while (split != NULL)
+//    char* split = strtok(inputString," ");
+//    while (split != NULL)
     {
-    printf ("%s\n",split);
-    split = strtok (NULL, " ");
+//    Serial.println(split);
+//    split = strtok (NULL, " ");
     }
-    printf("first index: %s\n", split[0]);
+//    Serial.println(split[0]);
 
     if(inputString == "f") {
       unsigned long newTime = millis();
