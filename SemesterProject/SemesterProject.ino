@@ -64,8 +64,10 @@ void loop() {
       if(inputString == 's') {
         unsigned long newTime = millis();
         unsigned long diff = newTime - oldTime;
-        stack.back()->cmd_length = diff;
-        Serial.println(millis());
+        if(stack.back()->command == 'f')
+          stack.back()->cmd_length = diff;
+        
+        stack.push('s');
         
         sparki.moveStop();
         oldTime = millis();
@@ -98,7 +100,7 @@ void loop() {
           stack.back()->cmd_length = diff;
         
         sparki.gripperClose();
-        delay(5000);
+        delay(6000);
         sparki.gripperStop();
         sparki.moveRight(180);
         currentState = STATE_TRACEBACK;
@@ -158,8 +160,8 @@ void loop() {
       }
       if(cmd.command == 'd') {
           sparki.moveStop();
-          sparki.gripperOppen();
-          delay(5000);
+          sparki.gripperOpen();
+          delay(6000);
           sparki.gripperClose();
 
           //restart state and command stack
@@ -172,6 +174,10 @@ void loop() {
 
   delay(100);
 }
+
+
+
+
 
 
 
