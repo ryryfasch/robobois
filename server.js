@@ -92,6 +92,14 @@ serialPort.on('open', function() {
           command = 'e';
         }
       }
+      if(req.body.command.indexOf("dance") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 'm ' + req.body.command.split(" ")[1];
+          console.log(command);
+        } else{
+          command = 'm';
+        }
+      }
       serialPort.write(command, serialPortCallback);
     // serialPort.on('open', function() {
     //    console.log("Connected2\n");
