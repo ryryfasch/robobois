@@ -22,6 +22,18 @@ char inputString;
  * Then open PuTTY and connect to COM10/COM11 and then code should run via bluetooth
  */
 
+void resetState()
+{
+  while(!stack.isEmpty()) {
+    stack.pop();
+  }
+
+  CommandItem start('d', 0);
+  stack.push(start);
+  currentState = STATE_FIND_OBJECT;
+  inputString = NULL;
+}
+
 void setup() {
   // put your setup code here, to run once:
   // PuTTY serail port is COM10 or COM11
@@ -107,12 +119,7 @@ void loop() {
       }
       if(inputString == 'e') {
         sparki.moveStop();
-        while(!stack.isEmpty()) {
-          stack.pop();
-          CommandItem start('d', 0);
-          stack.push(start);
-        }
-        
+        resetState();
       }
     }
     inputString = NULL;
@@ -162,18 +169,20 @@ void loop() {
           sparki.moveStop();
           sparki.gripperOpen();
           delay(6000);
-          sparki.gripperClose();
+          sparki.gripperStop();
 
           //restart state and command stack
-          CommandItem start('d', 0);
-          stack.push(start);
-          currentState = STATE_FIND_OBJECT; 
+          resetState();
       }
     }
   }
 
   delay(100);
 }
+
+
+
+
 
 
 
