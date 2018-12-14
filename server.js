@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 var SerialPort = require('serialport');
-const util = require('util');
+const util = require('util
 
 const app = express();
 
