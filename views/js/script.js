@@ -1,41 +1,60 @@
 const artyom = new Artyom();
 
-var inputText;
+var inputText = '';
+var commands = [];
 
-var micBtn = document.getElementById("mic");
-var UserDictation;
-
-micBtn.addEventListener("mousedown", getCommand);
-micBtn.addEventListener("mouseup", setCommand);
-
-function getCommand(){
-  console.log("getting command");
-
-  UserDictation = artyom.newDictation({
-      continuous:true, // Enable continuous if HTTPS connection
-      onResult:function(text){
-          inputText = text;
-          // console.log(inputText);
-
-          // setCommand(inputText);
-
-      },
-      onStart:function(){
-          console.log("Dictation started by the user");
-      },
-      onEnd:function(){
-          alert("Dictation stopped by the user");
-      }
-  });
-
-  UserDictation.start();
+function startArtyom(){
+    console.log("initializing Artyom");
+    artyom.initialize({
+       lang: "en-GB",
+       continuous: false,
+       debug: true,
+       listen: true
+    });
 }
 
-function setCommand(text){
-  console.log(UserDictation);
-  // console.log("in set");
-  // console.log("Text: " + inputText);
-  // var submit = document.getElementById('textInput');
-  // submit.value = text;
+artyom.on(['forward','for']).then(function(i){
+    switch (i) {
+        case 0:
+            console.log("forward");
+            $("#textInput").val("forward");
+        break;
+        case 1:
+            console.log("foward");
+        break;            
+    }
+});
+artyom.on(['left']).then(function(){
+    console.log("left");
+    $("#textInput").val("left");
+});
+artyom.on(['right']).then(function(){
+    console.log("right");
+    $("#textInput").val("right");
+});
+artyom.on(['stop']).then(function(){
+    console.log("stop");
+    $("#textInput").val("stop");
+});
+artyom.on(['grab']).then(function(){
+    console.log("grab");
+    $("#textInput").val("grab");
+});
+artyom.on(['exit']).then(function(){
+    console.log("exit");
+    $("#textInput").val("exit");
+});
 
-}
+
+$("#micButton").mousedown(function(){
+    startArtyom();
+});
+$("#micButton").mouseup(function(){
+    
+});
+
+// function updateForm(command){
+//     console.log("in update form: ");
+//     console.log(command);
+//     $("textInput").val(command);
+// }

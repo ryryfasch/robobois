@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; default-src 'self'> -->
 
     <title>Sparki Controller</title>
-
+    
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <script src="js/artyom.window.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/script.js" defer></script>
 
   </head>
@@ -16,7 +17,7 @@
 
     <div class="wrapper">
       <div class="content">
-        <!-- <div id="mic" class="micArea">
+        <div id="mic" class="micArea">
           <img id="micButton" src="images/micIcon.png" alt="mic">
         </div> -->
         <form id="form" action='/' method='post'>
