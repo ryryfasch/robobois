@@ -8,7 +8,7 @@ struct CommandItem
     char command;
     unsigned long cmd_length;
 
-    CommandItem(char instruction, long time)
+    CommandItem(char instruction, unsigned long time)
     {
         command = instruction;
         cmd_length = time;
@@ -87,5 +87,7 @@ bool CommandStack::isEmpty()
 }
 
 #endif
+
+
 
 
