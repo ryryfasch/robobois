@@ -13,16 +13,10 @@ function startArtyom(){
     });
 }
 
-artyom.on(['forward','for']).then(function(i){
-    switch (i) {
-        case 0:
-            console.log("forward");
-            $("#textInput").val("forward");
-        break;
-        case 1:
-            console.log("foward");
-        break;
-    }
+artyom.on(['forward']).then(function(i){
+    console.log("forward");
+        $("#textInput").val("forward");
+        $('#button1').trigger('click');
 });
 artyom.on(['left']).then(function(){
     console.log("left");
