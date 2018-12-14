@@ -43,6 +43,11 @@ artyom.on(['exit']).then(function(){
     $("#textInput").val("exit");
     $('#button1').trigger('click');
 });
+artyom.on(['dance']).then(function(){
+    console.log("exit");
+    $("#textInput").val("dance");
+    $('#button1').trigger('click');
+});
 
 
 $("#micButton").mousedown(function(){
