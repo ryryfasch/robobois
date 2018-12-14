@@ -158,7 +158,7 @@ void loop() {
       }
       if(cmd.command == 'd') {
           sparki.moveStop();
-          sparki.gripperOppen();
+          sparki.gripperOpen();
           delay(5000);
           sparki.gripperClose();
 
@@ -172,6 +172,7 @@ void loop() {
 
   delay(100);
 }
+
 
 
 
