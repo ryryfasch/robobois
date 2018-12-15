@@ -57,6 +57,14 @@ $("#micButton").mouseup(function(){
 
 });
 
+$("#forward").click(function(){
+    console.log("forward");
+    // data = "forward"
+    // $.post( "localhost:3000/", function( data ) {
+       
+    //   });
+});
+
 // function updateForm(command){
 //     console.log("in update form: ");
 //     console.log(command);
