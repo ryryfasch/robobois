@@ -152,13 +152,6 @@ void loop() {
       currentTracebackTime = millis();
       totalTracebackTime = currentTracebackTime + cmd.cmd_length;
 
-      // float iTraceBackTime = currentTracebackTime/1000.0f;
-      // float cmdTraceBackLength = totalTracebackTime/1000.0f;
-
-
-//      Serial.print("Command Length: ");   Serial.println(cmdTraceBackLength);
-//      Serial.print("Traceback tiem: ");   Serial.println(iTraceBackTime);
-
       if(cmd.cmd_length > 0)
         tracebackTimeSet = true;
       else
