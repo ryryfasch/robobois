@@ -58,12 +58,27 @@ $("#micButton").mouseup(function(){
 });
 
 $("#forward").click(function(){
-    console.log("forward");
-    // data = "forward"
-    // $.post( "localhost:3000/", function( data ) {
-       
-    //   });
+    $("#textInput").val("forward");
+        $('#button1').trigger('click');
 });
+$("#left").click(function(){
+    $("#textInput").val("left");
+    $('#button1').trigger('click');
+});
+$("#right").click(function(){
+    $("#textInput").val("right");
+    $('#button1').trigger('click');
+});
+$("#grab").click(function(){
+    $("#textInput").val("grab");
+    $('#button1').trigger('click');
+});
+$("#dance").click(function(){
+    $("#textInput").val("dance");
+    $('#button1').trigger('click');
+});
+
+
 
 // function updateForm(command){
 //     console.log("in update form: ");
