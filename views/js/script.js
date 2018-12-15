@@ -59,7 +59,7 @@ $("#micButton").mouseup(function(){
 
 $("#forward").click(function(){
     $("#textInput").val("forward");
-        $('#button1').trigger('click');
+    $('#button1').trigger('click');
 });
 $("#left").click(function(){
     $("#textInput").val("left");

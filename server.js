@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 app.use(express.static(__dirname + '/views'));
-app.use(bodyParser.json);
 // app.use(express.static('public'));
 
 // SerialPort.list(function (err, ports) {
@@ -48,11 +47,10 @@ serialPort.on('open', function() {
       if(req.body.command.indexOf("forward") != -1){
         if(req.body.command.split(" ")[1]){
           command = 'f ' + req.body.command.split(" ")[1];
-          console.log(req.body.command);
-
         } else{
           command = 'f';
         }
+        console.log(command);
       }
       if(req.body.command.indexOf("left") != -1){
         if(req.body.command.split(" ")[1]){
@@ -61,6 +59,7 @@ serialPort.on('open', function() {
         } else {
           command = 'l';
         }
+        console.log(command);
       }
       if(req.body.command.indexOf("right") != -1){
         if(req.body.command.split(" ")[1]){
@@ -69,6 +68,7 @@ serialPort.on('open', function() {
         } else{
           command = 'r';
         }
+        console.log(command);
       }
       if(req.body.command.indexOf("stop") != -1){
         if(req.body.command.split(" ")[1]){
