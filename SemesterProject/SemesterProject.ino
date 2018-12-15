@@ -4,8 +4,11 @@
 
 #define STATE_FIND_OBJECT 0
 #define STATE_TRACEBACK 1
+#define STATE_DANCE 2
 
 CommandStack stack;
+
+bool finished = false;
 
 unsigned long oldTime;
 
@@ -114,12 +117,20 @@ void loop() {
         sparki.gripperClose();
         delay(6000);
         sparki.gripperStop();
-        sparki.moveRight(180);
+        if(stack.back()->command == 'r')
+          sparki.moveLeft(180);
+        else
+          sparki.moveRight(180);
+
         currentState = STATE_TRACEBACK;
       }
       if(inputString == 'e') {
         sparki.moveStop();
         resetState();
+      }
+
+      if(inputString == 'm') {
+        currentState = STATE_DANCE;
       }
     }
     inputString = NULL;
@@ -173,12 +184,38 @@ void loop() {
 
           //restart state and command stack
           resetState();
+
+          sparki.moveForward(-4);
+          finished = true;
+          currentState = STATE_DANCE;
       }
     }
   }
 
+  if(currentState == STATE_DANCE) {
+    int moveDist = 10;
+    sparki.moveRight(moveDist/2);
+    sparki.moveLeft(moveDist);
+    sparki.moveRight(moveDist);
+    sparki.moveLeft(moveDist);
+    sparki.moveRight(moveDist);
+    sparki.moveLeft(moveDist);
+    sparki.moveRight(moveDist/2);
+    if(finished) {
+      sparki.moveRight(180);
+      sparki.moveForward(1);
+      sparki.moveForward(-1);
+      finished = false;
+    } else {
+      sparki.moveRight(360);
+    }
+    currentState = STATE_FIND_OBJECT;
+  }
+
   delay(100);
 }
+
+
 
 
 
