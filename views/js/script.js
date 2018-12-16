@@ -80,6 +80,10 @@ $("#back").click(function(){
     $("#textInput").val("back");
     $('#button1').trigger('click');
 });
+$("#stop_1_").click(function(){
+    $("#textInput").val("stop");
+    $('#button1').trigger('click');
+});
 $("#grab").click(function(){
     $("#textInput").val("grab");
     $('#button1').trigger('click');

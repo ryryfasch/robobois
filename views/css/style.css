@@ -8,6 +8,9 @@ html, body{
   height: 100vh;
   background: linear-gradient(60deg, #4b1231, #2a162b);
 }
+/* .formField{
+	display: none;
+} */
 /* .svgContainer{
   display: inline-block;
 	position: relative;

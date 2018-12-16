@@ -179,6 +179,9 @@ void loop() {
       if(cmd.command == 'f') {
         sparki.moveForward();
       }
+      if(cmd.command == 'b') {
+        sparki.moveBackward();
+      }
       if(cmd.command == 's') {
         sparki.moveStop();
       }
@@ -220,6 +223,8 @@ void loop() {
 
   delay(100);
 }
+
+
 
 
 
