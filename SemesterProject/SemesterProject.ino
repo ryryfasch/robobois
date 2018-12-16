@@ -68,7 +68,7 @@ void loop() {
 
         unsigned long newTime = millis();
         unsigned long diff = newTime - oldTime;
-        if(stack.back()->command == 'f')
+        if(stack.back()->command == 'f' || stack.back()->command == 'b')
           stack.back()->cmd_length = diff;
         stack.push('f');
         
@@ -76,10 +76,23 @@ void loop() {
         sparki.moveForward();
         oldTime = millis();
       }
+      if(inputString == 'b') {
+        if(stack.getSize() == 1)
+          oldTime = millis();
+
+        unsigned long newTime = millis();
+        unsigned long diff = newTime - oldTime;
+        if(stack.back()->command == 'f' || stack.back()->command == 'b')
+          stack.back()->cmd_length = diff;
+        stack.push('f');
+        
+        sparki.moveBackward();
+        oldTime = millis();
+      }
       if(inputString == 's') {
         unsigned long newTime = millis();
         unsigned long diff = newTime - oldTime;
-        if(stack.back()->command == 'f')
+        if(stack.back()->command == 'f' || stack.back()->command == 'b')
           stack.back()->cmd_length = diff;
         
         stack.push('s');
@@ -90,7 +103,7 @@ void loop() {
       if(inputString == 'l') {
         unsigned long newTime = millis();
         unsigned long diff = newTime - oldTime;
-        if(stack.back()->command == 'f')
+        if(stack.back()->command == 'f' || stack.back()->command == 'b')
           stack.back()->cmd_length = diff;
 
         stack.push('l');
@@ -100,7 +113,7 @@ void loop() {
       if(inputString == 'r') {        
         unsigned long newTime = millis();
         unsigned long diff = newTime - oldTime;
-        if(stack.back()->command == 'f')
+        if(stack.back()->command == 'f' || stack.back()->command == 'b')
           stack.back()->cmd_length = diff;
 
         stack.push('r');
@@ -111,7 +124,7 @@ void loop() {
         sparki.moveStop();
         unsigned long newTime = millis();
         unsigned long diff = newTime - oldTime;
-        if(stack.back()->command == 'f')
+        if(stack.back()->command == 'f' || stack.back()->command == 'b')
           stack.back()->cmd_length = diff;
         
         sparki.gripperClose();
