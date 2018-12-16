@@ -78,6 +78,14 @@ serialPort.on('open', function() {
           command = 's';
         }
       }
+      if(req.body.command.indexOf("back") != -1){
+        if(req.body.command.split(" ")[1]){
+          command = 'b ' + req.body.command.split(" ")[1];
+          console.log(command);
+        } else{
+          command = 'b';
+        }
+      }
       if(req.body.command.indexOf("grab") != -1){
         if(req.body.command.split(" ")[1]){
           command = 'g ' + req.body.command.split(" ")[1];

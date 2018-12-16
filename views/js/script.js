@@ -1,8 +1,5 @@
 const artyom = new Artyom();
 
-var inputText = '';
-var commands = [];
-
 function startArtyom(){
     console.log("initializing Artyom");
     artyom.initialize({
@@ -33,6 +30,11 @@ artyom.on(['stop']).then(function(){
     $("#textInput").val("stop");
     $('#button1').trigger('click');
 });
+artyom.on(['back']).then(function(){
+    console.log("back");
+    $("#textInput").val("back");
+    $('#button1').trigger('click');
+});
 artyom.on(['grab']).then(function(){
     console.log("grab");
     $("#textInput").val("grab");
@@ -46,6 +48,11 @@ artyom.on(['exit']).then(function(){
 artyom.on(['dance']).then(function(){
     console.log("exit");
     $("#textInput").val("dance");
+    $('#button1').trigger('click');
+});
+artyom.on(['reset']).then(function(){
+    console.log("reset");
+    $("#textInput").val("reset");
     $('#button1').trigger('click');
 });
 
@@ -69,6 +76,10 @@ $("#right").click(function(){
     $("#textInput").val("right");
     $('#button1').trigger('click');
 });
+$("#back").click(function(){
+    $("#textInput").val("back");
+    $('#button1').trigger('click');
+});
 $("#grab").click(function(){
     $("#textInput").val("grab");
     $('#button1').trigger('click');
@@ -77,11 +88,7 @@ $("#dance").click(function(){
     $("#textInput").val("dance");
     $('#button1').trigger('click');
 });
-
-
-
-// function updateForm(command){
-//     console.log("in update form: ");
-//     console.log(command);
-//     $("textInput").val(command);
-// }
+$("#reset").click(function(){
+    $("#textInput").val("reset");
+    $('#button1').trigger('click');
+});
